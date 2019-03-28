@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block title %}Drawing Tool{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-header">
+          <h1>Drawing Tool PHP V1.0</h1>
+        </div>
+        <div class="card-body">
+          <p class="card-text">The following application is able to create a canvas and draw on it based on given width and height values.</p>
+          <form id="new_canvas">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-6" >
+                  <label for="width">Width</label>
+                  <input type="number" name="width" id="width" required="1">
+                </div>
+                <div class="col-6" >
+                  <label for="height">Height</label>
+                  <input type="number" name="height" id="height" required="1">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input id="new_canvas_btn" type="submit" name="new_canvas" value="Create New Canvas" class="btn btn-primary">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="canvas">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

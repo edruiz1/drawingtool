@@ -1,0 +1,9 @@
+# config/validation.yaml
+App\Entity\Canvas:
+  properties:
+      width:
+          - NotBlank: ~
+          - Type: int
+      height:
+          - NotBlank: ~
+          - Type: int
