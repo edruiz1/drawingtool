@@ -1,42 +1,122 @@
-{% extends "base.html.twig" %}
+{% extends ["base.html.twig"] %}
 {% block title %}Drawing Tool{% endblock %}
 {% block body %}
 <div class="container-fluid">
   <div class="row">
     <div class="col">
       <div class="card text-center">
+
         <div class="card-header">
           <h1>Drawing Tool PHP V1.0</h1>
         </div>
+
         <div class="card-body">
           <p class="card-text">The following application is able to create a canvas and draw on it based on given width and height values.</p>
-          <form id="new_canvas">
+          <form id="new-canvas">
             <div class="container-fluid">
+              <div class="row">
+                <div id="canvas-error" class="canvas-error col-12 alert alert-danger" role="alert"></div>
+              </div>
               <div class="row">
                 <div class="col-6" >
                   <label for="width">Width</label>
-                  <input type="number" name="width" id="width" required="1">
+                  <input type="number" name="width" id="width" required>
                 </div>
                 <div class="col-6" >
                   <label for="height">Height</label>
-                  <input type="number" name="height" id="height" required="1">
+                  <input type="number" name="height" id="height" required>
                 </div>
               </div>
+              <hr>
               <div class="row">
                 <div class="col-12">
-                  <input id="new_canvas_btn" type="submit" name="new_canvas" value="Create New Canvas" class="btn btn-primary">
+                  <input type="submit" value="Create New Canvas" class="btn btn-primary">
+                </div>
+                <div class="col-12">
+                  <input id="clear-canvas" type="Button" value="Clear Canvas" class="btn btn-primary">
                 </div>
               </div>
             </div>
           </form>
         </div>
+
+        <hr>
+
       </div>
     </div>
   </div>
+  <div class="card card-new-line text-center">
+    <div class="card-body forms">
+      <form id="new-line">
+        <h2 class="text-center">Draw a Line</h2>
+        <div class="row">
+          <div id="line-error" class="line-error col-12 alert alert-danger" role="alert"></div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label for="x1">x1</label>
+            <input type="number" id="x1" name="x1" required>
+          </div>
+          <div class="col-3">
+            <label for="y1">y1</label>
+            <input type="number" id="y1" name="y1" required>
+          </div>
+          <div class="col-3">
+            <label for="x2">x2</label>
+            <input type="number" id="x2" name="x2" required>
+          </div>
+          <div class="col-3">
+            <label for="y2">y2</label>
+            <input type="number" id="y2" name="y2" required>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12">
+            <input type="submit" value="Draw a Line" class="btn btn-success">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card card-new-rectangle text-center">
+    <div class="card-body forms">
+      <form id="new-rectangle">
+        <h2 class="text-center">Draw a Rectangle</h2>
+        <div class="row">
+          <div id="rectangle-error" class="rectangle-error col-12 alert alert-danger" role="alert"></div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <label for="rx1">rx1</label>
+            <input type="number" id="rx1" name="rx1" required>
+          </div>
+          <div class="col-3">
+            <label for="ry1">ry1</label>
+            <input type="number" id="ry1" name="ry1" required>
+          </div>
+          <div class="col-3">
+            <label for="rx2">rx2</label>
+            <input type="number" id="rx2" name="rx2" required>
+          </div>
+          <div class="col-3">
+            <label for="ry2">ry2</label>
+            <input type="number" id="ry2" name="ry2" required>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12">
+            <input type="submit" value="Draw a Rectangle" class="btn btn-success">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
   <div class="row">
-    <div class="col">
-      <div class="canvas">
-      </div>
+    <div class="col canvas-wrapper">
+      <canvas id="canvas" class="canvas">
+      </canvas>
     </div>
   </div>
 </div>

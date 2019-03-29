@@ -2,54 +2,33 @@
 #src/Controller/SiteController.php
 namespace App\Controller;
 
-use App\Entity\Canvas;
+use App\Exception\ExceptionManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NewCanvasController extends AbstractController {
 
     public function ajaxAction(Request $request) {
-      $w = $request->get('w');
-      $h = $request->get('h');
-      if(is_null($w) || is_null($h)) {
-
+      $w = abs(intval($request->get('w')));
+      $h = abs(intval($request->get('h')));
+      if(is_null($w) || $w == '') {
+        throw new ExceptionManager("Variable width cannot be null or a text.");
       }
-      $response = ['w' => $w, 'h' => $h];
-      return new JsonResponse(json_encode($response));
-    }
-
-    public function new(Request $request)
-    {
-        // creates a canvas and gives it some dummy data for this example
-        $canvas = new Canvas();
-
-        $form = $this->createFormBuilder($canvas)
-            ->add('width', IntegerType::class)
-            ->add('height', IntegerType::class)
-            ->add('save', SubmitType::class, ['label' => 'Create Canvas'])
-            ->getForm();
-
-            $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $canvas = $form->getData();
-
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($task);
-            // $entityManager->flush();
-
-            return new JsonResponse( json_encode($canvas) );
-        }
-
-        return $this->render('canvas/new.html.twig', [
-            'form' => $form->createView(),
-        ]);
+      if(is_null($h) || $h == '') {
+        throw new ExceptionManager("Variable height cannot be null or a text");
+      }
+      if(is_nan($w)) {
+        throw new ExceptionManager("Variable width is not a number.");
+      }
+      if(is_nan($h)) {
+        throw new ExceptionManager("Variable height is not a number.");
+      }
+      $response = [
+        'status' => TRUE,
+        'width' => $w,
+        'height' => $h
+      ];
+      return new JsonResponse($response);
     }
 }

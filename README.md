@@ -1,21 +1,14 @@
-# Symfony Skeleton Installation Powered By Docksal
+# PHP Drawing Tool Code Challenge
 
-This is a sample vanilla symfony skeleton installation pre-configured for use with Docksal.  
-
-Features:
-
-- Symfony Skeleton
-- `fin init` [example](.docksal/commands/init)
-- Using the [default](.docksal/docksal.env#L9) Docksal LAMP stack with [image version pinning](.docksal/docksal.env#L13-L15)
-- PHP and MySQL settings overrides [examples](.docksal/etc)
-- Command wrapper for Symfony Console
+This is a code challenge developed by Eduardo Ruiz using Docker, Docksal and Symfony 4.
 
 ## Setup instructions
 
-### Step #1: Docksal environment setup
+### Step #1: Docker and Docksal environment setup
 
-**This is a one time setup - skip this if you already have a working Docksal environment.**  
+**This is a one time setup - skip this if you already have a working Docker and Docksal environment.**
 
+Follow [Docker setup instructions](https://docs.docker.com/install/)
 Follow [Docksal environment setup instructions](https://docs.docksal.io/en/master/getting-started/env-setup)
 
 ### Step #2: Project setup
@@ -23,8 +16,8 @@ Follow [Docksal environment setup instructions](https://docs.docksal.io/en/maste
 1. Clone this repo into your Projects directory
 
     ```
-    git clone https://github.com/docksal/symfony-skeleton.git symfonyapp
-    cd symfonyapp
+    git clone https://github.com/edruiz1/drawingtool drawingtool
+    cd drawingtool
     ```
 
 2. Initialize the site
@@ -38,18 +31,10 @@ Follow [Docksal environment setup instructions](https://docs.docksal.io/en/maste
 3. Point your browser to
 
     ```
-    http://symfonyapp.docksal
+    http://drawingtool.docksal
     ```
 
-## More automation with 'fin init'
-
-Site provisioning can be automated using `fin init`, which calls the shell script in [.docksal/commands/init](.docksal/commands/init).  
-This script is meant to be modified per project. The one in this repo will give you a good starting example.
-
-Some common tasks that can be handled by the init script (an other [custom commands](https://docs.docksal.io/en/master/fin/custom-commands/)):
-
-- initialize local settings files for Docker Compose, Drupal, Behat, etc.
-- import DB or perform a site install
-- compile Sass
-- run DB updates, revert features, clear caches, etc.
-- enable/disable modules, update variables values
+4. Run tests
+    ```
+    ./bin/phpunit
+    ```

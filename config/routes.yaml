@@ -5,3 +5,11 @@ index:
 new_canvas:
     path: /new-canvas
     controller: App\Controller\NewCanvasController::ajaxAction
+
+new_line:
+    path: /new-line
+    controller: App\Controller\NewLineController::ajaxAction
+
+new_rectangle:
+    path: /new-rectangle
+    controller: App\Controller\NewRectangleController::ajaxAction

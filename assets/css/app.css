@@ -5,4 +5,23 @@ body {
 
 .canvas {
   background-color: beige;
+  width: 0px;
+  height: 0px;
+}
+
+.canvas-wrapper {
+  text-align: center;
+}
+
+.canvas-error,
+.line-error,
+.rectangle-error,
+.card-new-line,
+.card-new-rectangle {
+  visibility: hidden;
+}
+
+#clear-canvas{
+  margin-top: 20px;
+  visibility: hidden;
 }
